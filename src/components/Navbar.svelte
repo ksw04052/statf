@@ -1,19 +1,16 @@
 <script>
-    import Stats from "../components/Stats.svelte"
     let isMenuOpen = false
-    let isStatOpen = false
+    export let statToggler = () => {}
 
     function toggleMenu() {
         isMenuOpen = !isMenuOpen
     }
-    function toggleStat() {
-        isStatOpen = !isStatOpen
-    }
+
 </script>
 <div class="navbar">
     <a href="/" class="title"><h1>스탯창</h1></a>
     <div style="flex-grow: 1;"></div>
-    <button class="stat-btn" on:click={toggleStat}>스탯창</button>
+    <button class="stat-btn" on:click={statToggler}>스탯창</button>
     <button class="menu-btn" on:click={toggleMenu}>메뉴</button>
     <nav class:menu-open={isMenuOpen}>
         <ul>
@@ -26,9 +23,7 @@
         </ul>
     </nav>
 </div>
-<div class="{isStatOpen == true ? 'stat-open' : 'stats'}">
-    <Stats />
-</div>
+
 
 
 <style>
@@ -60,12 +55,7 @@
         justify-content: space-between;
         align-items: center;
     }
-    .stats {
-        display: none;
-    }
-    .stat-open {
-        display:block;
-    }
+    
     ul {
         display: flex;
         flex-direction: column;

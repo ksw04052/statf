@@ -6,46 +6,46 @@
     </div>
     <table>
         <tr class="equip-row">
-            <td>반지1</td>
+            <td><span>반지1</span></td>
             <td></td>
-            <td>모자</td>
+            <td><span>모자</span></td>
             <td></td>
-            <td>엠블렘</td>
+            <td><span>엠블렘</span></td>
         </tr>
         <tr class="equip-row">
-            <td>반지2</td>
-            <td>펜던트1</td>
-            <td>얼굴장식</td>
+            <td><span>반지2</span></td>
+            <td><span>펜던트1</span></td>
+            <td><span>얼굴장식</span></td>
             <td></td>
-            <td>뱃지</td>
+            <td><span>뱃지</span></td>
         </tr>
         <tr class="equip-row">
-            <td>반지3</td>
-            <td>펜던트2</td>
-            <td>눈장식</td>
-            <td>귀고리</td>
-            <td>훈장</td>
+            <td><span>반지3</span></td>
+            <td><span>펜던트2</span></td>
+            <td><span>눈장식</span></td>
+            <td><span>귀고리</span></td>
+            <td><span>훈장</span></td>
         </tr>
         <tr class="equip-row">
-            <td>반지4</td>
-            <td>무기</td>
-            <td>상의</td>
-            <td>어깨장식</td>
-            <td>보조</td>
+            <td><span>반지4</span></td>
+            <td><span>무기</span></td>
+            <td><span>상의</span></td>
+            <td><span>어깨장식</span></td>
+            <td><span>보조</span></td>
         </tr>
         <tr class="equip-row">
-            <td>포켓</td>
-            <td>벨트</td>
-            <td>하의</td>
-            <td>장갑</td>
-            <td>망토</td>
+            <td><span>포켓</span></td>
+            <td><span>벨트</span></td>
+            <td><span>하의</span></td>
+            <td><span>장갑</span></td>
+            <td><span>망토</span></td>
         </tr>
         <tr class="equip-row">
             <td></td>
             <td></td>
-            <td>신발</td>
-            <td>안드로이드</td>
-            <td>기계심장</td>
+            <td><span>신발</span></td>
+            <td><span>안드로이드</span></td>
+            <td><span>기계심장</span></td>
         </tr>
 
     </table>
@@ -61,6 +61,7 @@
         border-radius: 5px 5px 0px 0px;
         border-collapse: collapse;
         padding: 0.1rem;
+        background-color: var(--light);
     }
     .tabs {
         margin-bottom: 1vh;
