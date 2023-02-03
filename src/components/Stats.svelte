@@ -1,3 +1,16 @@
+<script>
+// @ts-nocheck
+    
+    import { equipData } from "../lib/equip"
+    import { potData } from "../lib/potential"
+
+
+    // $: strSum = $equipData.forEach(item => {
+    //     strSum = strSum + item.str[0] + item.str[1] + item.str[2]
+    // })
+
+</script>
+
 <div class="stat-window">
     <table>
         <tr class="stat-row">
@@ -21,7 +34,7 @@
         </tr>
         <tr class="stat-row">
             <td>STR</td>
-            <td colspan="3">123</td>
+            <td colspan="3"></td>
         </tr>
         <tr class="stat-row">
             <td>DEX</td>

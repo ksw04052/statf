@@ -1,9 +1,16 @@
 <script>
-    import {equipData} from '../lib/equip'
+// @ts-nocheck
+
+    import { equipData } from "../lib/equip"
+    import { potData } from "../lib/potential"
 
     let sel = "cap"
    // @ts-ignore
-     $: cur = $equipData[sel]
+    $: cur = $equipData[sel]
+    // @ts-ignore
+    $: pline1 = $potData.potentialp.legendary[cur.potentiall.line1]
+    $: pline2 = $potData.potentialp.legendary[cur.potentiall.line2]
+    $: pline3 = $potData.potentialp.legendary[cur.potentiall.line3]
 
     /**
 	 * @param {string} param
@@ -126,7 +133,15 @@
         </div>
         <div class="potential dotted-top">
             <p>잠재옵션</p>
-            <p>{cur.potential}</p>
+            {#if cur.potentiall.line1 != ""}
+                <p>{pline1.desc}</p>
+            {/if}
+            {#if cur.potentiall.line2 != ""}
+                <p>{pline2.desc}</p>
+            {/if}
+            {#if cur.potentiall.line3 != ""}
+                <p>{pline3.desc}</p>
+            {/if}
         </div>
         <div class="bpotential dotted-top">
             <p>에디셔널 잠재옵션</p>

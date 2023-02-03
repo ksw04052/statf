@@ -1,5 +1,5 @@
-import { validate_each_argument } from "svelte/internal";
 import { writable } from "svelte/store";
+
 
 let equip = {
     cap : {
@@ -21,11 +21,16 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 8,
-        potential : {
+        potentiall : {
+            line1 : "allpp",
+            line2 : "dexps",
+            line3 : "dexps"
+        },
+        potentials : {
             allp : 9,
             dexp : 18
         },
-        bpotential : {
+        bpotentials : {
             adv : 26,
             allp : 4
         }
@@ -49,6 +54,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
+        potentiall : {
+            line1 : "dexpp",
+            line2 : "dexpp",
+            line3 : "dexps"
+        },
         potential : {
             dexp : 33
         },
@@ -76,6 +86,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "inf",
+        potentiall : {
+            line1 : "dexpp",
+            line2 : "dexpp",
+            line3 : "dexps"
+        },
         potential : {
             dexp : 33
         },
@@ -104,6 +119,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
+        potentiall : {
+            line1 : "allpp",
+            line2 : "dexps",
+            line3 : "dexps"
+        },
         potential : {
             allp : 9,
             dexp : 18
@@ -133,6 +153,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
+        potentiall : {
+            line1 : "",
+            line2 : "",
+            line3 : ""
+        },
         potential : {
             
         },
@@ -159,6 +184,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
+        potentiall : {
+            line1 : "",
+            line2 : "",
+            line3 : ""
+        },
         potential : {
 
         },
@@ -185,6 +215,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 7,
+        potentiall : {
+            line1 : "dexpp",
+            line2 : "dexps",
+            line3 : "dexps"
+        },
         potential : {
             dexp : 30
         },
@@ -212,6 +247,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "inf",
+        potentiall : {
+            line1 : "dexpp",
+            line2 : "allps",
+            line3 : "dexps"
+        },
         potential : {
             allp : 6,
             dexp : 21
@@ -240,6 +280,11 @@ let equip = {
         armp : [20, 0, 0],
         dmg : [0, 5, 0],
         scissor : "none",
+        potentiall : {
+            line1 : "bossp2",
+            line2 : "bosss1",
+            line3 : "adps"
+        },
         potential : {
             boss : 75,
             adp : 9
@@ -275,6 +320,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 7,
+        potentiall : {
+            line1 : "dexpp",
+            line2 : "allpp",
+            line3 : "allps"
+        },
         potential : {
             allp : 15,
             dexp : 12
@@ -304,6 +354,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "inf",
+        potentiall : {
+            line1 : "dexpp",
+            line2 : "allps",
+            line3 : "dexps"
+        },
         potential : {
             allp : 6,
             dexp : 21
@@ -332,6 +387,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
+        potentiall : {
+            line1 : "dexpp",
+            line2 : "dexps",
+            line3 : "dexps"
+        },
         potential : {
             dexp : 30
         },
@@ -359,6 +419,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 9,
+        potentiall : {
+            line1 : "dexpp",
+            line2 : "allps",
+            line3 : "allps"
+        },
         potential : {
             allp : 12,
             dexp : 12
@@ -387,6 +452,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 8,
+        potentiall : {
+            line1 : "dexpp",
+            line2 : "dexps",
+            line3 : "allps"
+        },
         potential : {
             allp : 6,
             dexp : 21
@@ -415,6 +485,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 7,
+        potentiall : {
+            line1 : "dexpp",
+            line2 : "dexps",
+            line3 : "allps"
+        },
         potential : {
             allp : 6,
             dexp : 21
@@ -444,6 +519,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 8,
+        potentiall : {
+            line1 : "dexpp",
+            line2 : "dexps",
+            line3 : "dexps"
+        },
         potential : {
             dexp : 30
         },
@@ -470,6 +550,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 8,
+        potentiall : {
+            line1 : "dexpp",
+            line2 : "dexps",
+            line3 : "dexps"
+        },
         potential : {
             dexp : 30
         },
@@ -498,6 +583,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 3,
+        potentiall : {
+            line1 : "crdp",
+            line2 : "crdp",
+            line3 : "sharp"
+        },
         potential : {
             crd : 16,
             skill : "sharp"
@@ -526,6 +616,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "inf",
+        potentiall : {
+            line1 : "",
+            line2 : "",
+            line3 : ""
+        },
         potential : {
             allp : 9,
             dexp : 18
@@ -554,6 +649,11 @@ let equip = {
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
+        potentiall : {
+            line1 : "adpp",
+            line2 : "adps",
+            line3 : "adps"
+        },
         potential : {
             adp : 30
         },
@@ -563,24 +663,29 @@ let equip = {
         }
     },
     badge : {
-        reqLv : 150,
-        title : "하이네스 레인져베레",
-        rank : "legendary",
-        starforce : 22,
-        scroll : 12,
-        str : [0, 0, 0],
-        dex : [0, 0, 0],
-        int : [0, 0, 0],
-        luk : [0, 0, 0],
+        reqLv : 130,
+        title : "크리스탈 웬투스 뱃지",
+        rank : "none",
+        starforce : 0,
+        scroll : 0,
+        str : [10, 0, 0],
+        dex : [10, 0, 1],
+        int : [10, 0, 0],
+        luk : [10, 0, 0],
         hp : [0, 0, 0],
         hpp : 0,
-        ad : [0, 0, 0],
-        ap : [0, 0, 0],
+        ad : [5, 0, 0],
+        ap : [5, 0, 0],
         all : [0, 0, 0],
         boss : [0, 0, 0],
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
-        scissor : 8,
+        scissor : "none",
+        potentiall : {
+            line1 : "",
+            line2 : "",
+            line3 : ""
+        },
         potential : {
             allp : 9,
             dexp : 18
@@ -591,24 +696,29 @@ let equip = {
         }
     },
     medal : {
-        reqLv : 150,
-        title : "하이네스 레인져베레",
-        rank : "legendary",
-        starforce : 22,
-        scroll : 12,
-        str : [0, 0, 0],
-        dex : [0, 0, 0],
-        int : [0, 0, 0],
-        luk : [0, 0, 0],
+        reqLv : 100,
+        title : "칠요의 몬스터파커",
+        rank : "none",
+        starforce : 0,
+        scroll : 0,
+        str : [7, 0, 0],
+        dex : [7, 0, 0],
+        int : [7, 0, 0],
+        luk : [7, 0, 0],
         hp : [0, 0, 0],
         hpp : 0,
-        ad : [0, 0, 0],
-        ap : [0, 0, 0],
+        ad : [7, 0, 0],
+        ap : [7, 0, 0],
         all : [0, 0, 0],
         boss : [0, 0, 0],
-        armp : [0, 0, 0],
+        armp : [10, 0, 0],
         dmg : [0, 0, 0],
-        scissor : 8,
+        scissor : "none",
+        potentiall : {
+            line1 : "",
+            line2 : "",
+            line3 : ""
+        },
         potential : {
             allp : 9,
             dexp : 18
@@ -619,11 +729,11 @@ let equip = {
         }
     },
     subWeapon : {
-        reqLv : 150,
-        title : "하이네스 레인져베레",
+        reqLv : 100,
+        title : "무한의 마법 화살",
         rank : "legendary",
-        starforce : 22,
-        scroll : 12,
+        starforce : 0,
+        scroll : 0,
         str : [0, 0, 0],
         dex : [0, 0, 0],
         int : [0, 0, 0],
@@ -636,7 +746,12 @@ let equip = {
         boss : [0, 0, 0],
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
-        scissor : 8,
+        scissor : "inf",
+        potentiall : {
+            line1 : "bossp2",
+            line2 : "bossp1",
+            line3 : "adps"
+        },
         potential : {
             allp : 9,
             dexp : 18
@@ -647,24 +762,29 @@ let equip = {
         }
     },
     cape : {
-        reqLv : 150,
-        title : "하이네스 레인져베레",
+        reqLv : 160,
+        title : "앱솔랩스 아처케이프",
         rank : "legendary",
         starforce : 22,
-        scroll : 12,
-        str : [0, 0, 0],
-        dex : [0, 0, 0],
-        int : [0, 0, 0],
-        luk : [0, 0, 0],
-        hp : [0, 0, 0],
+        scroll : 8,
+        str : [15, 0, 131],
+        dex : [15, 54, 187],
+        int : [15, 0, 91],
+        luk : [15, 0, 91],
+        hp : [0, 0, 1215],
         hpp : 0,
-        ad : [0, 0, 0],
-        ap : [0, 0, 0],
-        all : [0, 0, 0],
+        ad : [2, 4, 93],
+        ap : [2, 0, 92],
+        all : [0, 6, 0],
         boss : [0, 0, 0],
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
-        scissor : 8,
+        scissor : 9,
+        potentiall : {
+            line1 : "allpp",
+            line2 : "dexpp",
+            line3 : "allps"
+        },
         potential : {
             allp : 9,
             dexp : 18
@@ -675,24 +795,29 @@ let equip = {
         }
     },
     heart : {
-        reqLv : 150,
-        title : "하이네스 레인져베레",
+        reqLv : 100,
+        title : "페어리 하트",
         rank : "legendary",
-        starforce : 22,
-        scroll : 12,
-        str : [0, 0, 0],
-        dex : [0, 0, 0],
-        int : [0, 0, 0],
-        luk : [0, 0, 0],
-        hp : [0, 0, 0],
+        starforce : 8,
+        scroll : 10,
+        str : [0, 0, 19],
+        dex : [0, 0, 19],
+        int : [0, 0, 19],
+        luk : [0, 0, 19],
+        hp : [100, 0, 0],
         hpp : 0,
-        ad : [0, 0, 0],
+        ad : [0, 0, 50],
         ap : [0, 0, 0],
         all : [0, 0, 0],
         boss : [0, 0, 0],
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
-        scissor : 8,
+        scissor : "none",
+        potentiall : {
+            line1 : "dexpp",
+            line2 : "dexps",
+            line3 : "dexps"
+        },
         potential : {
             allp : 9,
             dexp : 18
