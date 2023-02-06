@@ -1,16 +1,18 @@
 <script>
 // @ts-nocheck
 
-    import { equipData } from "../lib/equip"
+    import { equipData} from "../lib/equip"
     import { potData } from "../lib/potential"
 
     let sel = "cap"
    // @ts-ignore
-    $: cur = $equipData[sel]
+    $: cur = $equipData.find(e => e.type == sel)
     // @ts-ignore
     $: pline1 = $potData.potentialp.legendary[cur.potentiall.line1]
     $: pline2 = $potData.potentialp.legendary[cur.potentiall.line2]
     $: pline3 = $potData.potentialp.legendary[cur.potentiall.line3]
+
+
 
     /**
 	 * @param {string} param
@@ -18,6 +20,23 @@
     function changeSel(param) {
         sel = param
     }
+
+    function rank(param) {
+        return $equipData.find(e => e.type == param).rank
+    }
+    // let strSum = 0
+    // let dexSum = 0
+    // let intSum = 0
+    // let lukSum = 0
+    // function statSum() {
+    //     $equipData.forEach(item => {
+    //         strSum = strSum + item.str[0] + item.str[1] + item.str[2]
+    //         dexSum = dexSum + item.dex[0] + item.dex[1] + item.dex[2]
+    //         intSum = intSum + item.int[0] + item.int[1] + item.int[2]
+    //         lukSum = lukSum + item.luk[0] + item.luk[1] + item.luk[2]
+    //         return strSum
+    //     })
+    // }
     // function changeReqLv() {
     //     equipData.update(n => {
     //         n.hat.reqLv = 456
@@ -34,46 +53,46 @@
         </div>
         <table>
             <tr class="equip-row">
-                <td><button class="equip-item {$equipData.ring1.rank}" on:click={() => changeSel("ring1")}><span>반지1</span></button></td>
+                <td><button class="equip-item {rank("ring1")}" on:click={() => changeSel("ring1")}><span>반지1</span></button></td>
+                <td>{equipData.adSum()}</td>
+                <td><button class="equip-item {rank("cap")}" on:click={() => changeSel("cap")}><span>모자</span></button></td>
                 <td></td>
-                <td><button class="equip-item {$equipData.cap.rank}" on:click={() => changeSel("cap")}><span>모자</span></button></td>
-                <td></td>
-                <td><button class="equip-item {$equipData.emblem.rank}" on:click={() => changeSel("emblem")}><span>엠블렘</span></button></td>
+                <td><button class="equip-item {rank("emblem")}" on:click={() => changeSel("emblem")}><span>엠블렘</span></button></td>
             </tr>
             <tr class="equip-row">
-                <td><button class="equip-item {$equipData.ring2.rank}" on:click={() => changeSel("ring2")}><span>반지2</span></button></td>
-                <td><button class="equip-item {$equipData.pendant1.rank}" on:click={() => changeSel("pendant1")}><span>펜던트1</span></button></td>
-                <td><button class="equip-item {$equipData.forehead.rank}" on:click={() => changeSel("forehead")}><span>얼굴장식</span></button></td>
+                <td><button class="equip-item {rank("ring2")}" on:click={() => changeSel("ring2")}><span>반지2</span></button></td>
+                <td><button class="equip-item {rank("pendant1")}" on:click={() => changeSel("pendant1")}><span>펜던트1</span></button></td>
+                <td><button class="equip-item {rank("forehead")}" on:click={() => changeSel("forehead")}><span>얼굴장식</span></button></td>
                 <td></td>
-                <td><button class="equip-item {$equipData.badge.rank}" on:click={() => changeSel("badge")}><span>뱃지</span></button></td>
+                <td><button class="equip-item {rank("badge")}" on:click={() => changeSel("badge")}><span>뱃지</span></button></td>
             </tr>
             <tr class="equip-row">
-                <td><button class="equip-item {$equipData.ring3.rank}" on:click={() => changeSel("ring3")}><span>반지3</span></button></td>
-                <td><button class="equip-item {$equipData.pendant2.rank}" on:click={() => changeSel("pendant2")}><span>펜던트2</span></button></td>
-                <td><button class="equip-item {$equipData.eyeAcc.rank}" on:click={() => changeSel("eyeAcc")}><span>눈장식</span></button></td>
-                <td><button class="equip-item {$equipData.earAcc.rank}" on:click={() => changeSel("earAcc")}><span>귀고리</span></button></td>
-                <td><button class="equip-item {$equipData.medal.rank}" on:click={() => changeSel("medal")}><span>훈장</span></button></td>
+                <td><button class="equip-item {rank("ring3")}" on:click={() => changeSel("ring3")}><span>반지3</span></button></td>
+                <td><button class="equip-item {rank("pendant2")}" on:click={() => changeSel("pendant2")}><span>펜던트2</span></button></td>
+                <td><button class="equip-item {rank("eyeAcc")}" on:click={() => changeSel("eyeAcc")}><span>눈장식</span></button></td>
+                <td><button class="equip-item {rank("earAcc")}" on:click={() => changeSel("earAcc")}><span>귀고리</span></button></td>
+                <td><button class="equip-item {rank("medal")}" on:click={() => changeSel("medal")}><span>훈장</span></button></td>
             </tr>
             <tr class="equip-row">
-                <td><button class="equip-item {$equipData.ring4.rank}" on:click={() => changeSel("ring4")}><span>반지4</span></button></td>
-                <td><button class="equip-item {$equipData.weapon.rank}" on:click={() => changeSel("weapon")}><span>무기</span></button></td>
-                <td><button class="equip-item {$equipData.clothes.rank}" on:click={() => changeSel("clothes")}><span>상의</span></button></td>
-                <td><button class="equip-item {$equipData.shoulder.rank}" on:click={() => changeSel("shoulder")}><span>어깨장식</span></button></td>
-                <td><button class="equip-item {$equipData.subWeapon.rank}" on:click={() => changeSel("subWeapon")}><span>보조</span></button></td>
+                <td><button class="equip-item {rank("ring4")}" on:click={() => changeSel("ring4")}><span>반지4</span></button></td>
+                <td><button class="equip-item {rank("weapon")}" on:click={() => changeSel("weapon")}><span>무기</span></button></td>
+                <td><button class="equip-item {rank("clothes")}" on:click={() => changeSel("clothes")}><span>상의</span></button></td>
+                <td><button class="equip-item {rank("shoulder")}" on:click={() => changeSel("shoulder")}><span>어깨장식</span></button></td>
+                <td><button class="equip-item {rank("subWeapon")}" on:click={() => changeSel("subWeapon")}><span>보조</span></button></td>
             </tr>
             <tr class="equip-row">
-                <td><button class="equip-item {$equipData.pocket.rank}" on:click={() => changeSel("pocket")}><span>포켓</span></button></td>
-                <td><button class="equip-item {$equipData.belt.rank}" on:click={() => changeSel("belt")}><span>벨트</span></button></td>
-                <td><button class="equip-item {$equipData.pants.rank}" on:click={() => changeSel("pants")}><span>하의</span></button></td>
-                <td><button class="equip-item {$equipData.gloves.rank}" on:click={() => changeSel("gloves")}><span>장갑</span></button></td>
-                <td><button class="equip-item {$equipData.cape.rank}" on:click={() => changeSel("cape")}><span>망토</span></button></td>
+                <td><button class="equip-item {rank("pocket")}" on:click={() => changeSel("pocket")}><span>포켓</span></button></td>
+                <td><button class="equip-item {rank("belt")}" on:click={() => changeSel("belt")}><span>벨트</span></button></td>
+                <td><button class="equip-item {rank("pants")}" on:click={() => changeSel("pants")}><span>하의</span></button></td>
+                <td><button class="equip-item {rank("gloves")}" on:click={() => changeSel("gloves")}><span>장갑</span></button></td>
+                <td><button class="equip-item {rank("cape")}" on:click={() => changeSel("cape")}><span>망토</span></button></td>
             </tr>
             <tr class="equip-row">
                 <td></td>
                 <td></td>
-                <td><button class="equip-item {$equipData.shoes.rank}" on:click={() => changeSel("shoes")}><span>신발</span></button></td>
-                <td><button class="equip-item {$equipData.android.rank}" on:click={() => changeSel("android")}><span>안드로이드</span></button></td>
-                <td><button class="equip-item {$equipData.heart.rank}" on:click={() => changeSel("heart")}><span>기계심장</span></button></td>
+                <td><button class="equip-item {rank("shoes")}" on:click={() => changeSel("shoes")}><span>신발</span></button></td>
+                <td><button class="equip-item {rank("android")}" on:click={() => changeSel("android")}><span>안드로이드</span></button></td>
+                <td><button class="equip-item {rank("heart")}" on:click={() => changeSel("heart")}><span>기계심장</span></button></td>
             </tr>
     
         </table>

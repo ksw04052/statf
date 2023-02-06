@@ -34,15 +34,15 @@
         </tr>
         <tr class="stat-row">
             <td>STR</td>
-            <td colspan="3"></td>
+            <td colspan="3">{equipData.strSum()}</td>
         </tr>
         <tr class="stat-row">
             <td>DEX</td>
-            <td colspan="3">123</td>
+            <td colspan="3">{equipData.dexSum()}</td>
         </tr>
         <tr class="stat-row">
             <td>INT</td>
-            <td colspan="3">123</td>
+            <td colspan="3"></td>
         </tr>
         <tr class="stat-row">
             <td>LUK</td>
@@ -64,7 +64,7 @@
             <td>방어율 무시</td>
             <td>123%</td>
             <td>스타포스</td>
-            <td>123%</td>
+            <td>{equipData.starforceSum()}</td>
         </tr>
         <tr class="stat-row2">
             <td>크리티컬 확률</td>
@@ -80,7 +80,7 @@
         </tr>
         <tr class="stat-row2">
             <td>공격력</td>
-            <td>123%</td>
+            <td>{equipData.adSum()}</td>
             <td>마력</td>
             <td>123%</td>
         </tr>

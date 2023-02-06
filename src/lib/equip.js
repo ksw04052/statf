@@ -1,8 +1,9 @@
-import { writable } from "svelte/store";
+// @ts-ignore
+import { writable, derived } from "svelte/store";
 
-
-let equip = {
-    cap : {
+let equip = [
+    {
+        type: "cap",
         reqLv : 150,
         title : "하이네스 레인져베레",
         rank : "legendary",
@@ -35,7 +36,8 @@ let equip = {
             allp : 4
         }
     },
-    ring1 : {
+    {
+        type : "ring1",
         reqLv : 160,
         title : "가디언 엔젤 링",
         rank : "legendary",
@@ -67,7 +69,8 @@ let equip = {
             adv : 12
         }
     },
-    ring2 : {
+    {
+        type : "ring2",
         reqLv : 140,
         title : "마이스터링",
         rank : "legendary",
@@ -100,7 +103,8 @@ let equip = {
             dexv : 16
         }
     },
-    ring3 : {
+    {
+        type : "ring3",
         reqLv : 120,
         title : "어웨이크 링",
         rank : "legendary",
@@ -134,7 +138,8 @@ let equip = {
             ip10 : 1
         }
     },
-    ring4 : {
+    {
+        type : "ring4",
         reqLv : 110,
         title : "리스트레인트 링",
         rank : "none",
@@ -165,7 +170,8 @@ let equip = {
             
         }
     },
-    pocket : {
+    {
+        type : "pocket",
         reqLv : 160,
         title : "저주받은 녹의 마도서",
         rank : "none",
@@ -196,7 +202,8 @@ let equip = {
 
         }
     },
-    pendant1 : {
+    {
+        type : "pendant1",
         reqLv : 140,
         title : "도미네이터 펜던트",
         rank : "legendary",
@@ -228,7 +235,8 @@ let equip = {
             dexp : 4
         }
     },
-    pendant2 : {
+    {
+        type : "pendant2",
         reqLv : 130,
         title : "피콕스 퍼플 펜던트",
         rank : "legendary",
@@ -261,7 +269,8 @@ let equip = {
             strv : 14
         }
     },
-    weapon : {
+    {
+        type : "weapon",
         reqLv : 200,
         title : "제네시스 듀얼보우건",
         rank : "legendary",
@@ -301,7 +310,8 @@ let equip = {
         },
         genesis : true
     },
-    belt : {
+    {
+        type : "belt",
         reqLv : 150,
         title : "타일런트 케이론 벨트",
         rank : "legendary",
@@ -335,7 +345,8 @@ let equip = {
             dp10 : 1
         }
     },
-    forehead : {
+    {
+        type : "forehead",
         reqLv : 130,
         title : "샤이니 레드 아처 마이스터 심볼",
         rank : "legendary",
@@ -368,7 +379,8 @@ let equip = {
             dexp : 5
         }
     },
-    eyeAcc : {
+    {
+        type : "eyeAcc",
         reqLv : 145,
         title : "파풀라투스 마크",
         rank : "legendary",
@@ -400,7 +412,8 @@ let equip = {
             dp10 : 2
         }
     },
-    clothes : {
+    {
+        type : "clothes",
         reqLv : 150,
         title : "이글아이 레인져후드",
         rank : "legendary",
@@ -433,7 +446,8 @@ let equip = {
             dexp : 8
         }
     },
-    pants : {
+    {
+        type : "pants",
         reqLv : 150,
         title : "트릭스터 레인져팬츠",
         rank : "legendary",
@@ -466,7 +480,8 @@ let equip = {
             dexp : 4
         }
     },
-    shoes : {
+    {
+        type : "shoes",
         reqLv : 160,
         title : "앱솔랩스 아처슈즈",
         rank : "legendary",
@@ -500,7 +515,8 @@ let equip = {
             lp10 : 1
         }
     },
-    earAcc : {
+    {
+        type : "earAcc",
         reqLv : 140,
         title : "마이스터 이어링",
         rank : "legendary",
@@ -531,7 +547,8 @@ let equip = {
             dexp : 8
         }
     },
-    shoulder : {
+    {
+        type : "shoulder",
         reqLv : 160,
         title : "앱솔랩스 아처숄더",
         rank : "legendary",
@@ -564,7 +581,8 @@ let equip = {
             intp : 5
         }
     },
-    gloves : {
+    {
+        type : "gloves",
         reqLv : 160,
         title : "앱솔랩스 아처글러브",
         rank : "legendary",
@@ -597,7 +615,8 @@ let equip = {
             dp10 : 3
         }
     },
-    android : {
+    {
+        type : "android",
         reqLv : 10,
         title : "죽음의데스로이드(여)",
         rank : "none",
@@ -630,7 +649,8 @@ let equip = {
             allp : 4
         }
     },
-    emblem : {
+    {
+        type : "emblem",
         reqLv : 100,
         title : "골드 히어로즈 엠블렘",
         rank : "legendary",
@@ -662,7 +682,8 @@ let equip = {
             lukp : 9
         }
     },
-    badge : {
+    {
+        type : "badge",
         reqLv : 130,
         title : "크리스탈 웬투스 뱃지",
         rank : "none",
@@ -695,7 +716,8 @@ let equip = {
             allp : 4
         }
     },
-    medal : {
+    {
+        type : "medal",
         reqLv : 100,
         title : "칠요의 몬스터파커",
         rank : "none",
@@ -728,7 +750,8 @@ let equip = {
             allp : 4
         }
     },
-    subWeapon : {
+    {
+        type : "subWeapon",
         reqLv : 100,
         title : "무한의 마법 화살",
         rank : "legendary",
@@ -761,7 +784,8 @@ let equip = {
             allp : 4
         }
     },
-    cape : {
+    {
+        type : "cape",
         reqLv : 160,
         title : "앱솔랩스 아처케이프",
         rank : "legendary",
@@ -794,7 +818,8 @@ let equip = {
             allp : 4
         }
     },
-    heart : {
+    {
+        type : "heart",
         reqLv : 100,
         title : "페어리 하트",
         rank : "legendary",
@@ -827,6 +852,81 @@ let equip = {
             allp : 4
         }
     }
+]
+
+
+function equipFunction() {
+    const { subscribe, set, update } = writable(equip)
+
+    return {
+        subscribe,
+        strSum : () => {
+            let result = 0
+            equip.forEach(item => result = result + item.str[0] + item.str[1] + item.str[2])
+            return result
+        },
+        dexSum : () => {
+            let result = 0
+            equip.forEach(item => result = result + item.dex[0] + item.dex[1] + item.dex[2])
+            return result
+        },
+        intSum : () => {
+            let result = 0
+            equip.forEach(item => result = result + item.int[0] + item.int[1] + item.int[2])
+            return result
+        },
+        lukSum : () => {
+            let result = 0
+            equip.forEach(item => result = result + item.luk[0] + item.luk[1] + item.luk[2])
+            return result
+        },
+        hpSum : () => {
+            let result = 0
+            equip.forEach(item => result = result + item.hp[0] + item.hp[1] + item.hp[2])
+            return result
+        },
+        hppSum : () => {
+            let result = 0
+            equip.forEach(item => result = result + item.hpp)
+            return result
+        },
+        adSum : () => {
+            let result = 0
+            equip.forEach(item => result = result + item.ad[0] + item.ad[1] + item.ad[2])
+            return result
+        },
+        apSum : () => {
+            let result = 0
+            equip.forEach(item => result = result + item.ap[0] + item.ap[1] + item.ap[2])
+            return result
+        },
+        allSum : () => {
+            let result = 0
+            equip.forEach(item => result = result + item.all[0] + item.all[1] + item.all[2])
+            return result
+        },
+        bossSum : () => {
+            let result = 0
+            equip.forEach(item => result = result + item.boss[0] + item.boss[1] + item.boss[2])
+            return result
+        },
+        armpSum : () => {
+            let result = 0
+            equip.forEach(item => result = result + item.armp[0] + item.armp[1] + item.armp[2])
+            return result
+        },
+        dmgSum : () => {
+            let result = 0
+            equip.forEach(item => result = result + item.dmg[0] + item.dmg[1] + item.dmg[2])
+            return result
+        },
+        starforceSum : () => {
+            let result = 0
+            equip.forEach(item => result = result + item.starforce)
+            return result
+        },
+    }
 }
 
-export const equipData = writable(equip)
+export const equipData = equipFunction()
+
