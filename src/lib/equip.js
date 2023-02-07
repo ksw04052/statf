@@ -1,12 +1,11 @@
 // @ts-ignore
-import { writable, derived } from "svelte/store";
+import { writable } from "svelte/store";
 
 let equip = [
     {
         type: "cap",
         reqLv : 150,
         title : "하이네스 레인져베레",
-        rank : "legendary",
         starforce : 22,
         scroll : 12,
         str : [40, 0, 117],
@@ -22,25 +21,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 8,
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "allpp",
             line2 : "dexps",
             line3 : "dexps"
         },
-        potentials : {
-            allp : 9,
-            dexp : 18
-        },
-        bpotentials : {
-            adv : 26,
-            allp : 4
+        bpotential : {
+            rank : "legendary",
+            line1 : "advp",
+            line2 : "advs",
+            line3 : "allps2"
         }
     },
     {
         type : "ring1",
         reqLv : 160,
         title : "가디언 엔젤 링",
-        rank : "legendary",
         starforce : 22,
         scroll : 3,
         str : [5, 0, 138],
@@ -56,24 +53,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "dexpp",
             line2 : "dexpp",
             line3 : "dexps"
         },
-        potential : {
-            dexp : 33
-        },
         bpotential : {
-            dexp : 12,
-            adv : 12
+            rank : "legendary",
+            line1 : "dexpp2",
+            line2 : "dexps2",
+            line3 : "advs"
         }
     },
     {
         type : "ring2",
         reqLv : 140,
         title : "마이스터링",
-        rank : "legendary",
         starforce : 22,
         scroll : 2,
         str : [5, 0, 103],
@@ -89,25 +85,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "inf",
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "dexpp",
             line2 : "dexpp",
             line3 : "dexps"
         },
-        potential : {
-            dexp : 33
-        },
         bpotential : {
-            dp10 : 2,
-            dexp : 5,
-            dexv : 16
+            rank : "legendary",
+            line1 : "dexp10p",
+            line2 : "dexps2",
+            line3 : "dexvs"
         }
     },
     {
         type : "ring3",
         reqLv : 120,
         title : "어웨이크 링",
-        rank : "legendary",
         starforce : 0,
         scroll : 3,
         str : [10, 0, 30],
@@ -123,26 +117,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "allpp",
             line2 : "dexps",
             line3 : "dexps"
         },
-        potential : {
-            allp : 9,
-            dexp : 18
-        },
         bpotential : {
-            dp10 : 2,
-            allp : 4,
-            ip10 : 1
+            rank : "legendary",
+            line1 : "dexp10p",
+            line2 : "allps2",
+            line3 : "intp10s"
         }
     },
     {
         type : "ring4",
         reqLv : 110,
         title : "리스트레인트 링",
-        rank : "none",
         starforce : 0,
         scroll : 0,
         str : [4, 0, 0],
@@ -158,23 +149,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
-        potentiall : {
-            line1 : "",
-            line2 : "",
-            line3 : ""
-        },
         potential : {
-            
+            rank : "none",
+            line1 : "none",
+            line2 : "none",
+            line3 : "none"
         },
         bpotential : {
-            
+            rank : "none",
+            line1 : "none",
+            line2 : "none",
+            line3 : "none"
         }
     },
     {
         type : "pocket",
         reqLv : 160,
         title : "저주받은 녹의 마도서",
-        rank : "none",
         starforce : 0,
         scroll : 0,
         str : [10, 0, 0],
@@ -190,23 +181,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
-        potentiall : {
-            line1 : "",
-            line2 : "",
-            line3 : ""
-        },
         potential : {
-
+            rank : "none",
+            line1 : "none",
+            line2 : "none",
+            line3 : "none"
         },
         bpotential : {
-
+            rank : "none",
+            line1 : "none",
+            line2 : "none",
+            line3 : "none"
         }
     },
     {
         type : "pendant1",
         reqLv : 140,
         title : "도미네이터 펜던트",
-        rank : "legendary",
         starforce : 22,
         scroll : 6,
         str : [20, 24, 121],
@@ -222,24 +213,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 7,
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "dexpp",
             line2 : "dexps",
             line3 : "dexps"
         },
-        potential : {
-            dexp : 30
-        },
         bpotential : {
-            adv : 33,
-            dexp : 4
+            rank : "unique",
+            line1 : "advp",
+            line2 : "dexps2",
+            line3 : "advs"
         }
     },
     {
         type : "pendant2",
         reqLv : 130,
         title : "피콕스 퍼플 펜던트",
-        rank : "legendary",
         starforce : 20,
         scroll : 4,
         str : [0, 21, 75],
@@ -255,25 +245,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "inf",
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "dexpp",
             line2 : "allps",
             line3 : "dexps"
         },
-        potential : {
-            allp : 6,
-            dexp : 21
-        },
         bpotential : {
-            adv : 22,
-            strv : 14
+            rank : "epic",
+            line1 : "advp",
+            line2 : "strvp",
+            line3 : "advp"
         }
     },
     {
         type : "weapon",
         reqLv : 200,
         title : "제네시스 듀얼보우건",
-        rank : "legendary",
         starforce : 22,
         scroll : 8,
         str : [150, 0, 145],
@@ -289,23 +277,22 @@ let equip = [
         armp : [20, 0, 0],
         dmg : [0, 5, 0],
         scissor : "none",
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "bossp2",
             line2 : "bosss1",
             line3 : "adps"
         },
-        potential : {
-            boss : 75,
-            adp : 9
-        },
         bpotential : {
-            boss : 18,
-            adp : 18
+            rank : "legendary",
+            line1 : "bossp",
+            line2 : "adps",
+            line3 : "adps"
         },
         soul : {
-            type : "위대한",
+            prefix : "위대한",
             boss : "진 힐라",
-            effect : "boss",
+            type : "boss",
             value : 7
         },
         genesis : true
@@ -314,7 +301,6 @@ let equip = [
         type : "belt",
         reqLv : 150,
         title : "타일런트 케이론 벨트",
-        rank : "legendary",
         starforce : 12,
         scroll : 2,
         str : [50, 16, 119],
@@ -330,26 +316,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 7,
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "dexpp",
             line2 : "allpp",
             line3 : "allps"
         },
-        potential : {
-            allp : 15,
-            dexp : 12
-        },
         bpotential : {
-            dexp : 7,
-            allp : 4,
-            dp10 : 1
+            rank : "legendary",
+            line1 : "dexpp2",
+            line2 : "dexp10s",
+            line3 : "allps2"
         }
     },
     {
         type : "forehead",
         reqLv : 130,
         title : "샤이니 레드 아처 마이스터 심볼",
-        rank : "legendary",
         starforce : 20,
         scroll : 2,
         str : [3, 0, 76],
@@ -365,25 +348,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "inf",
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "dexpp",
             line2 : "allps",
             line3 : "dexps"
         },
-        potential : {
-            allp : 6,
-            dexp : 21
-        },
         bpotential : {
-            adv : 11,
-            dexp : 5
+            rank : "unique",
+            line1 : "dexpp2",
+            line2 : "extra",
+            line3 : "advs"
         }
     },
     {
         type : "eyeAcc",
         reqLv : 145,
         title : "파풀라투스 마크",
-        rank : "legendary",
         starforce : 22,
         scroll : 6,
         str : [8, 32, 105],
@@ -399,24 +380,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "dexpp",
             line2 : "dexps",
             line3 : "dexps"
         },
-        potential : {
-            dexp : 30
-        },
         bpotential : {
-            adv : 12,
-            dp10 : 2
+            rank : "legendary",
+            line1 : "dexp10p",
+            line2 : "advs",
+            line3 : "extra"
         }
     },
     {
         type : "clothes",
         reqLv : 150,
         title : "이글아이 레인져후드",
-        rank : "legendary",
         starforce : 22,
         scroll : 8,
         str : [30, 20, 118],
@@ -432,25 +412,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 9,
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "dexpp",
             line2 : "allps",
             line3 : "allps"
         },
-        potential : {
-            allp : 12,
-            dexp : 12
-        },
         bpotential : {
-            dexv : 14,
-            dexp : 8
+            rank : "epic",
+            line1 : "dexvp",
+            line2 : "dexpp2",
+            line3 : "dexpp2"
         }
     },
     {
         type : "pants",
         reqLv : 150,
         title : "트릭스터 레인져팬츠",
-        rank : "legendary",
         starforce : 22,
         scroll : 8,
         str : [30, 20, 119],
@@ -466,25 +444,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 8,
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "dexpp",
             line2 : "dexps",
             line3 : "allps"
         },
-        potential : {
-            allp : 6,
-            dexp : 21
-        },
         bpotential : {
-            adv : 20,
-            dexp : 4
+            rank : "epic",
+            line1 : "dexpp2",
+            line2 : "advs2",
+            line3 : "advs2"
         }
     },
     {
         type : "shoes",
         reqLv : 160,
         title : "앱솔랩스 아처슈즈",
-        rank : "legendary",
         starforce : 22,
         scroll : 8,
         str : [20, 20, 131],
@@ -500,26 +476,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 7,
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "dexpp",
             line2 : "dexps",
             line3 : "allps"
         },
-        potential : {
-            allp : 6,
-            dexp : 21
-        },
         bpotential : {
-            dexp : 7,
-            dp10 : 1,
-            lp10 : 1
+            rank : "legendary",
+            line1 : "dexpp2",
+            line2 : "dexp10s",
+            line3 : "lukp10s"
         }
     },
     {
         type : "earAcc",
         reqLv : 140,
         title : "마이스터 이어링",
-        rank : "legendary",
         starforce : 22,
         scroll : 7,
         str : [5, 40, 116],
@@ -535,23 +508,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 8,
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "dexpp",
             line2 : "dexps",
             line3 : "dexps"
         },
-        potential : {
-            dexp : 30
-        },
         bpotential : {
-            dexp : 8
+            rank : "epic",
+            line1 : "dexpp2",
+            line2 : "dexpp2",
+            line3 : "extra"
         }
     },
     {
         type : "shoulder",
         reqLv : 160,
         title : "앱솔랩스 아처숄더",
-        rank : "legendary",
         starforce : 22,
         scroll : 2,
         str : [14, 0, 133],
@@ -567,25 +540,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 8,
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "dexpp",
             line2 : "dexps",
             line3 : "dexps"
         },
-        potential : {
-            dexp : 30
-        },
         bpotential : {
-            dexp : 7,
-            allp : 4,
-            intp : 5
+            rank : "legendary",
+            line1 : "dexpp2",
+            line2 : "allps2",
+            line3 : "intps2"
         }
     },
     {
         type : "gloves",
         reqLv : 160,
         title : "앱솔랩스 아처글러브",
-        rank : "legendary",
         starforce : 22,
         scroll : 8,
         str : [20, 30, 131],
@@ -601,25 +572,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 3,
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "crdp",
             line2 : "crdp",
             line3 : "sharp"
         },
-        potential : {
-            crd : 16,
-            skill : "sharp"
-        },
         bpotential : {
-            adv : 12,
-            dp10 : 3
+            rank : "legendary",
+            line1 : "dexp10p",
+            line2 : "advs",
+            line3 : "dexp10s"
         }
     },
     {
         type : "android",
         reqLv : 10,
         title : "죽음의데스로이드(여)",
-        rank : "none",
         starforce : 0,
         scroll : 0,
         str : [0, 0, 0],
@@ -635,25 +604,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "inf",
-        potentiall : {
-            line1 : "",
-            line2 : "",
-            line3 : ""
-        },
         potential : {
-            allp : 9,
-            dexp : 18
+            rank : "none",
+            line1 : "none",
+            line2 : "none",
+            line3 : "none"
         },
         bpotential : {
-            adv : 26,
-            allp : 4
+            rank : "none",
+            line1 : "none",
+            line2 : "none",
+            line3 : "none"
         }
     },
     {
         type : "emblem",
         reqLv : 100,
         title : "골드 히어로즈 엠블렘",
-        rank : "legendary",
         starforce : 0,
         scroll : 0,
         str : [10, 0, 0],
@@ -669,24 +636,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "adpp",
             line2 : "adps",
             line3 : "adps"
         },
-        potential : {
-            adp : 30
-        },
         bpotential : {
-            adp : 21,
-            lukp : 9
+            rank : "legendary",
+            line1 : "adpp",
+            line2 : "lukps1",
+            line3 : "adps"
         }
     },
     {
         type : "badge",
         reqLv : 130,
         title : "크리스탈 웬투스 뱃지",
-        rank : "none",
         starforce : 0,
         scroll : 0,
         str : [10, 0, 0],
@@ -702,25 +668,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
-        potentiall : {
-            line1 : "",
-            line2 : "",
-            line3 : ""
-        },
         potential : {
-            allp : 9,
-            dexp : 18
+            rank : "none",
+            line1 : "none",
+            line2 : "none",
+            line3 : "none"
         },
         bpotential : {
-            adv : 26,
-            allp : 4
+            rank : "none",
+            line1 : "none",
+            line2 : "none",
+            line3 : "none"
         }
     },
     {
         type : "medal",
         reqLv : 100,
         title : "칠요의 몬스터파커",
-        rank : "none",
         starforce : 0,
         scroll : 0,
         str : [7, 0, 0],
@@ -736,25 +700,23 @@ let equip = [
         armp : [10, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
-        potentiall : {
-            line1 : "",
-            line2 : "",
-            line3 : ""
-        },
         potential : {
-            allp : 9,
-            dexp : 18
+            rank : "none",
+            line1 : "none",
+            line2 : "none",
+            line3 : "none"
         },
         bpotential : {
-            adv : 26,
-            allp : 4
+            rank : "none",
+            line1 : "none",
+            line2 : "none",
+            line3 : "none"
         }
     },
     {
         type : "subWeapon",
         reqLv : 100,
         title : "무한의 마법 화살",
-        rank : "legendary",
         starforce : 0,
         scroll : 0,
         str : [0, 0, 0],
@@ -770,25 +732,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "inf",
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "bossp2",
             line2 : "bossp1",
             line3 : "adps"
         },
-        potential : {
-            allp : 9,
-            dexp : 18
-        },
         bpotential : {
-            adv : 26,
-            allp : 4
+            rank : "legendary",
+            line1 : "adpp",
+            line2 : "extra",
+            line3 : "adps"
         }
     },
     {
         type : "cape",
         reqLv : 160,
         title : "앱솔랩스 아처케이프",
-        rank : "legendary",
         starforce : 22,
         scroll : 8,
         str : [15, 0, 131],
@@ -804,25 +764,23 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : 9,
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "allpp",
             line2 : "dexpp",
             line3 : "allps"
         },
-        potential : {
-            allp : 9,
-            dexp : 18
-        },
         bpotential : {
-            adv : 26,
-            allp : 4
+            rank : "unique",
+            line1 : "dexvp",
+            line2 : "advs",
+            line3 : "dexps2"
         }
     },
     {
         type : "heart",
         reqLv : 100,
         title : "페어리 하트",
-        rank : "legendary",
         starforce : 8,
         scroll : 10,
         str : [0, 0, 19],
@@ -838,18 +796,17 @@ let equip = [
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
         scissor : "none",
-        potentiall : {
+        potential : {
+            rank : "legendary",
             line1 : "dexpp",
             line2 : "dexps",
             line3 : "dexps"
         },
-        potential : {
-            allp : 9,
-            dexp : 18
-        },
         bpotential : {
-            adv : 26,
-            allp : 4
+            rank : "unique",
+            line1 : "allpp2",
+            line2 : "dexps2",
+            line3 : "hpps"
         }
     }
 ]

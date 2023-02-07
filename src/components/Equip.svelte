@@ -8,9 +8,14 @@
    // @ts-ignore
     $: cur = $equipData.find(e => e.type == sel)
     // @ts-ignore
-    $: pline1 = $potData.potentialp.legendary[cur.potentiall.line1]
-    $: pline2 = $potData.potentialp.legendary[cur.potentiall.line2]
-    $: pline3 = $potData.potentialp.legendary[cur.potentiall.line3]
+    $: pRank = cur.potential.rank
+    $: bpRank = cur.bpotential.rank
+    $: pline1 = $potData.potential[pRank][cur.potential.line1]
+    $: pline2 = $potData.potential[pRank][cur.potential.line2]
+    $: pline3 = $potData.potential[pRank][cur.potential.line3]
+    $: bpline1 = $potData.bpotential[bpRank][cur.bpotential.line1]
+    $: bpline2 = $potData.bpotential[bpRank][cur.bpotential.line2]
+    $: bpline3 = $potData.bpotential[bpRank][cur.bpotential.line3]
 
 
 
@@ -21,22 +26,24 @@
         sel = param
     }
 
-    function rank(param) {
-        return $equipData.find(e => e.type == param).rank
+    function rank(type) {
+        if($equipData.find(e => e.type == type).potential.rank == "legendary" || $equipData.find(e => e.type == type).bpotential.rank == "legendary") {
+            return "legendary"
+        }
+        else if ($equipData.find(e => e.type == type).potential.rank == "unique" || $equipData.find(e => e.type == type).bpotential.rank == "unique") {
+            return "unique"
+        }
+        else if ($equipData.find(e => e.type == type).potential.rank == "epic" || $equipData.find(e => e.type == type).bpotential.rank == "epic") {
+            return "epic"
+        }
+        else if ($equipData.find(e => e.type == type).potential.rank == "rare" || $equipData.find(e => e.type == type).bpotential.rank == "rare") {
+            return "rare"
+        }
+        else {
+            return "none"
+        }
+        
     }
-    // let strSum = 0
-    // let dexSum = 0
-    // let intSum = 0
-    // let lukSum = 0
-    // function statSum() {
-    //     $equipData.forEach(item => {
-    //         strSum = strSum + item.str[0] + item.str[1] + item.str[2]
-    //         dexSum = dexSum + item.dex[0] + item.dex[1] + item.dex[2]
-    //         intSum = intSum + item.int[0] + item.int[1] + item.int[2]
-    //         lukSum = lukSum + item.luk[0] + item.luk[1] + item.luk[2]
-    //         return strSum
-    //     })
-    // }
     // function changeReqLv() {
     //     equipData.update(n => {
     //         n.hat.reqLv = 456
@@ -54,7 +61,7 @@
         <table>
             <tr class="equip-row">
                 <td><button class="equip-item {rank("ring1")}" on:click={() => changeSel("ring1")}><span>반지1</span></button></td>
-                <td>{equipData.adSum()}</td>
+                <td></td>
                 <td><button class="equip-item {rank("cap")}" on:click={() => changeSel("cap")}><span>모자</span></button></td>
                 <td></td>
                 <td><button class="equip-item {rank("emblem")}" on:click={() => changeSel("emblem")}><span>엠블렘</span></button></td>
@@ -129,9 +136,9 @@
         </div>
         {/if}
         <div class="title">
-            {#if cur.soul}{cur.soul.type} {cur.soul.boss}의<br>{/if}{cur.title} {#if cur.scroll > 0}(+{cur.scroll}){/if}
+            <p>{#if cur.soul}{cur.soul.prefix} {cur.soul.boss}의<br>{/if}{cur.title} {#if cur.scroll > 0}(+{cur.scroll}){/if}</p>
         </div>
-        <div class="data">
+        <div class="data dotted-bottom">
             <p>STR : +{cur.str[0]+cur.str[1]+cur.str[2]} ({cur.str[0]}+{cur.str[1]}+{cur.str[2]})</p>
             <p>DEX : +{cur.dex[0]+cur.dex[1]+cur.dex[2]} ({cur.dex[0]}+{cur.dex[1]}+{cur.dex[2]})</p>
             <p>INT : +{cur.int[0]+cur.int[1]+cur.int[2]} ({cur.int[0]}+{cur.int[1]}+{cur.int[2]})</p>
@@ -150,24 +157,36 @@
                 <p>가위 사용 가능 횟수 : {cur.scissor}회</p>
             {/if}
         </div>
-        <div class="potential dotted-top">
-            <p>잠재옵션</p>
-            {#if cur.potentiall.line1 != ""}
-                <p>{pline1.desc}</p>
-            {/if}
-            {#if cur.potentiall.line2 != ""}
-                <p>{pline2.desc}</p>
-            {/if}
-            {#if cur.potentiall.line3 != ""}
-                <p>{pline3.desc}</p>
-            {/if}
+        {#if pRank != "none"}
+        <div class="potential dotted-bottom">
+            <p class="{pRank}">잠재옵션</p>
+                {#if cur.potential.line1 != ""}
+                    <p class="{pline1.rank}">{pline1.desc}</p>
+                {/if}
+                {#if cur.potential.line2 != ""}
+                    <p class="{pline2.rank}">{pline2.desc}</p>
+                {/if}
+                {#if cur.potential.line3 != ""}
+                    <p class="{pline3.rank}">{pline3.desc}</p>
+                {/if}
         </div>
-        <div class="bpotential dotted-top">
-            <p>에디셔널 잠재옵션</p>
-            <p>{cur.bpotential}</p>
+        {/if}
+        {#if bpRank != "none"}
+        <div class="bpotential dotted-bottom">
+            <p class="{bpRank}">에디셔널 잠재옵션</p>
+                {#if cur.bpotential.line1 != ""}
+                    <p class="{bpline1.rank}">+ {bpline1.desc}</p>
+                {/if}
+                {#if cur.bpotential.line2 != ""}
+                    <p class="{bpline2.rank}">+ {bpline2.desc}</p>
+                {/if}
+                {#if cur.bpotential.line3 != ""}
+                    <p class="{bpline3.rank}">+ {bpline3.desc}</p>
+                {/if}
         </div>
-        <div class="soul dotted-top">
-            <p>{#if cur.soul}{cur.soul.type} {cur.soul.boss}의 소울 적용{/if}</p>
+        {/if}
+        <div class="soul">
+            <p>{#if cur.soul}{cur.soul.prefix} {cur.soul.boss}의 소울 적용{/if}</p>
         </div>
     </div>
 </div>
@@ -209,16 +228,27 @@
         border: 1px solid black;
         border-radius: 5px;
         padding: 0.5rem;
+        background-color: hsla(0 0% 15% / 85%);
     }
     .equip-container {
         display: flex;
         flex-wrap: wrap;
     }
-    .dotted-top {
-        border-top: dotted;
+    .data p{
+        color: white;
+    }
+    .title p{
+        color: brown;
+        font-weight: 900;
+    }
+    .dotted-bottom {
+        border-bottom: dotted;
     }
     .starforce, .title{
         text-align: center;
+    }
+    .starforce {
+        color: yellow;
     }
     .tab {
         width: 50px;
@@ -234,6 +264,9 @@
     }
     .rare {
         color: skyblue;
+    }
+    .rare2 {
+        color: gray;
     }
     .none {
         color: transparent;

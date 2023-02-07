@@ -30,7 +30,7 @@
         </tr>
         <tr class="stat-row">
             <td>HP</td>
-            <td colspan="3">123456</td>
+            <td colspan="3">{equipData.hpSum()}</td>
         </tr>
         <tr class="stat-row">
             <td>STR</td>
@@ -42,17 +42,17 @@
         </tr>
         <tr class="stat-row">
             <td>INT</td>
-            <td colspan="3"></td>
+            <td colspan="3">{equipData.intSum()}</td>
         </tr>
         <tr class="stat-row">
             <td>LUK</td>
-            <td colspan="3">123</td>
+            <td colspan="3">{equipData.lukSum()}</td>
         </tr>
         <tr class="stat-row2">
             <td>데미지</td>
-            <td>123%</td>
+            <td>{equipData.dmgSum()}%</td>
             <td>보스 데미지</td>
-            <td>123%</td>
+            <td>{equipData.bossSum()}%</td>
         </tr>
         <tr class="stat-row2">
             <td>최종 데미지</td>
@@ -62,7 +62,7 @@
         </tr>
         <tr class="stat-row2">
             <td>방어율 무시</td>
-            <td>123%</td>
+            <td>{equipData.armpSum()}%</td>
             <td>스타포스</td>
             <td>{equipData.starforceSum()}</td>
         </tr>
@@ -82,7 +82,7 @@
             <td>공격력</td>
             <td>{equipData.adSum()}</td>
             <td>마력</td>
-            <td>123%</td>
+            <td>{equipData.apSum()}</td>
         </tr>
         <tr class="stat-row2">
             <td>아케인포스</td>
