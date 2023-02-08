@@ -1,7 +1,7 @@
 <script>
 // @ts-nocheck
 
-    import { equipData} from "../lib/equip"
+    import { equipData } from "../lib/equip"
     import { potData } from "../lib/potential"
 
     let sel = "cap"
@@ -17,14 +17,10 @@
     $: bpline2 = $potData.bpotential[bpRank][cur.bpotential.line2]
     $: bpline3 = $potData.bpotential[bpRank][cur.bpotential.line3]
 
-
-
     /**
 	 * @param {string} param
 	 */
-    function changeSel(param) {
-        sel = param
-    }
+    
 
     function rank(type) {
         if($equipData.find(e => e.type == type).potential.rank == "legendary" || $equipData.find(e => e.type == type).bpotential.rank == "legendary") {
@@ -44,12 +40,75 @@
         }
         
     }
-    // function changeReqLv() {
-    //     equipData.update(n => {
-    //         n.hat.reqLv = 456
-    //         return n
-    //     })
-    // }
+    function changeStr(param) {
+        equipData.update(n => {
+            n.find(e => e.type == "cap").str[1] = param
+            return n
+        })
+    }
+    let title = $equipData.find(e => e.type == sel).title
+    let scroll = $equipData.find(e => e.type == sel).scroll
+    let starforce = $equipData.find(e => e.type == sel).starforce
+    let str = $equipData.find(e => e.type == sel).str
+    let dex = $equipData.find(e => e.type == sel).dex
+    let int = $equipData.find(e => e.type == sel).int
+    let luk = $equipData.find(e => e.type == sel).luk
+    let hp = $equipData.find(e => e.type == sel).hp
+    let hpp = $equipData.find(e => e.type == sel).hpp
+    let ad = $equipData.find(e => e.type == sel).ad
+    let ap = $equipData.find(e => e.type == sel).ap
+    let all = $equipData.find(e => e.type == sel).all
+    let boss = $equipData.find(e => e.type == sel).boss
+    let armp = $equipData.find(e => e.type == sel).armp
+    let dmg = $equipData.find(e => e.type == sel).dmg
+    let scissor = $equipData.find(e => e.type == sel).scissor
+    function changeSel(param) {
+        sel = param
+        title = $equipData.find(e => e.type == sel).title
+        scroll = $equipData.find(e => e.type == sel).scroll
+        starforce = $equipData.find(e => e.type == sel).starforce
+        str = $equipData.find(e => e.type == sel).str
+        dex = $equipData.find(e => e.type == sel).dex
+        int = $equipData.find(e => e.type == sel).int
+        luk = $equipData.find(e => e.type == sel).luk
+        hp = $equipData.find(e => e.type == sel).hp
+        hpp = $equipData.find(e => e.type == sel).hpp
+        ad = $equipData.find(e => e.type == sel).ad
+        ap = $equipData.find(e => e.type == sel).ap
+        all = $equipData.find(e => e.type == sel).all
+        boss = $equipData.find(e => e.type == sel).boss
+        armp = $equipData.find(e => e.type == sel).armp
+        dmg = $equipData.find(e => e.type == sel).dmg
+        scissor = $equipData.find(e => e.type == sel).scissor
+    }
+    
+    function editCurrent() {
+        equipData.update(n => {
+            n.find(e => e.type == sel).title = title
+            n.find(e => e.type == sel).scroll = scroll
+            n.find(e => e.type == sel).starforce = starforce
+            n.find(e => e.type == sel).str = str
+            n.find(e => e.type == sel).dex = dex
+            n.find(e => e.type == sel).int = int
+            n.find(e => e.type == sel).luk = luk
+            n.find(e => e.type == sel).hp = hp
+            n.find(e => e.type == sel).hpp = hpp
+            n.find(e => e.type == sel).ad = ad
+            n.find(e => e.type == sel).ap = ap
+            n.find(e => e.type == sel).all = all
+            n.find(e => e.type == sel).boss = boss
+            n.find(e => e.type == sel).armp = armp
+            n.find(e => e.type == sel).dmg = dmg
+            if (scissor){
+                n.find(e => e.type == sel).scissor = scissor
+            }
+            else{
+                n.find(e => e.type == sel).scissor = "none"
+            }   
+            return n
+        })
+    }
+
 </script>
 <div class="equip-container">
     <div class="equip-window">
@@ -58,6 +117,7 @@
             <button class="tab">캐시</button>
             <button class="tab">펫</button>
         </div>
+        <button on:click={() => changeStr(2000)}>테스트</button>
         <table>
             <tr class="equip-row">
                 <td><button class="equip-item {rank("ring1")}" on:click={() => changeSel("ring1")}><span>반지1</span></button></td>
@@ -138,6 +198,9 @@
         <div class="title">
             <p>{#if cur.soul}{cur.soul.prefix} {cur.soul.boss}의<br>{/if}{cur.title} {#if cur.scroll > 0}(+{cur.scroll}){/if}</p>
         </div>
+        <div class="icon">
+            <img src="https://maplestory.io/api/kmst/1150/item/1152154/icon" alt="">
+        </div>
         <div class="data dotted-bottom">
             <p>STR : +{cur.str[0]+cur.str[1]+cur.str[2]} ({cur.str[0]}+{cur.str[1]}+{cur.str[2]})</p>
             <p>DEX : +{cur.dex[0]+cur.dex[1]+cur.dex[2]} ({cur.dex[0]}+{cur.dex[1]}+{cur.dex[2]})</p>
@@ -189,6 +252,25 @@
             <p>{#if cur.soul}{cur.soul.prefix} {cur.soul.boss}의 소울 적용{/if}</p>
         </div>
     </div>
+    <div class="equip-edit data">
+        <p>아이템명: <input type="text" bind:value={title}></p>
+        <p>스타포스: <input type="number" bind:value={starforce} class="nb-box"></p>
+        <p>작 횟수: <input type="number" bind:value={scroll} class="nb-box"></p>
+        <p>STR : +{str[0]+str[1]+str[2]} (<input type="number" bind:value={str[0]} class="nb-box">+<input type="number" bind:value={str[1]} class="nb-box">+<input type="number" bind:value={str[2]} class="nb-box">)</p>
+        <p>DEX : +{dex[0]+dex[1]+dex[2]} (<input type="number" bind:value={dex[0]} class="nb-box">+<input type="number" bind:value={dex[1]} class="nb-box">+<input type="number" bind:value={dex[2]} class="nb-box">)</p>
+        <p>INT : +{int[0]+int[1]+int[2]} (<input type="number" bind:value={int[0]} class="nb-box">+<input type="number" bind:value={int[1]} class="nb-box">+<input type="number" bind:value={int[2]} class="nb-box">)</p>
+        <p>LUK : +{luk[0]+luk[1]+luk[2]} (<input type="number" bind:value={luk[0]} class="nb-box">+<input type="number" bind:value={luk[1]} class="nb-box">+<input type="number" bind:value={luk[2]} class="nb-box">)</p>
+        <p>최대 HP : +{hp[0]+hp[1]+hp[2]} (<input type="number" bind:value={hp[0]} class="nb-box">+<input type="number" bind:value={hp[1]} class="nb-box">+<input type="number" bind:value={hp[2]} class="nb-box">)</p>
+        <p>최대 HP : +<input type="number" bind:value={hpp} class="nb-box">%</p>
+        <p>공격력 : +{ad[0]+ad[1]+ad[2]} (<input type="number" bind:value={ad[0]} class="nb-box">+<input type="number" bind:value={ad[1]} class="nb-box">+<input type="number" bind:value={ad[2]} class="nb-box">)</p>
+        <p>마력 : +{ap[0]+ap[1]+ap[2]} (<input type="number" bind:value={ap[0]} class="nb-box">+<input type="number" bind:value={ap[1]} class="nb-box">+<input type="number" bind:value={ap[2]} class="nb-box">)</p>
+        <p>올스탯 : +{all[0]+all[1]+all[2]}% (<input type="number" bind:value={all[0]} class="nb-box">+<input type="number" bind:value={all[1]} class="nb-box">+<input type="number" bind:value={all[2]} class="nb-box">)</p>
+        <p>보스 몬스터 공격 시 데미지 : +{boss[0]+boss[1]+boss[2]}% (<input type="number" bind:value={boss[0]} class="nb-box">+<input type="number" bind:value={boss[1]} class="nb-box">+<input type="number" bind:value={boss[2]} class="nb-box">)</p>
+        <p>몬스터 방어율 무시 : +{armp[0]+armp[1]+armp[2]}% (<input type="number" bind:value={armp[0]} class="nb-box">+<input type="number" bind:value={armp[1]} class="nb-box">+<input type="number" bind:value={armp[2]} class="nb-box">)</p>
+        <p>데미지 : +{dmg[0]+dmg[1]+dmg[2]}% (<input type="number" bind:value={dmg[0]} class="nb-box">+<input type="number" bind:value={dmg[1]} class="nb-box">+<input type="number" bind:value={dmg[2]} class="nb-box">)</p>
+        <p>가위 사용 가능 횟수 : <input type="number" bind:value={scissor} class="nb-box">회</p>
+        <button on:click={() => {editCurrent()}}>변경</button>
+    </div>
 </div>
 
 
@@ -230,6 +312,15 @@
         padding: 0.5rem;
         background-color: hsla(0 0% 15% / 85%);
     }
+    .icon img{
+        width: 30%;
+    }
+    .equip-edit {
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 0.5rem;
+        background-color: hsla(0 0% 15% / 85%);
+    }
     .equip-container {
         display: flex;
         flex-wrap: wrap;
@@ -238,11 +329,14 @@
         color: white;
     }
     .title p{
-        color: brown;
+        color: lightcoral;
         font-weight: 900;
     }
     .dotted-bottom {
         border-bottom: dotted;
+    }
+    .nb-box {
+        width: 3rem;
     }
     .starforce, .title{
         text-align: center;
@@ -260,7 +354,7 @@
         color: yellow;
     }
     .epic {
-        color: purple;
+        color: orchid;
     }
     .rare {
         color: skyblue;

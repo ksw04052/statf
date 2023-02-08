@@ -1,13 +1,15 @@
 <script>
 // @ts-nocheck
     
-    import { equipData } from "../lib/equip"
+    import { equipData, sumData } from "../lib/equip"
     import { potData } from "../lib/potential"
+    import { jobData, selJob } from "../lib/jobs"
 
-
-    // $: strSum = $equipData.forEach(item => {
-    //     strSum = strSum + item.str[0] + item.str[1] + item.str[2]
-    // })
+    // $: strSum2 = () => {
+    //     let result = 0
+    //     $equipData.forEach(item => result = result + item.str[0] + item.str[1] + item.str[2])
+    //     return result
+    // }
 
 </script>
 
@@ -19,7 +21,13 @@
         </tr>
         <tr class="stat-row">
             <td>직업</td>
-            <td colspan="3">메르세데스</td>
+            <td colspan="3">
+                <select bind:value={$selJob}>
+                    {#each $jobData as job}
+                        <option value={job.job}>{job.job}</option>
+                    {/each}
+                </select>
+            </td>
         </tr>
         <tr class="stat-row">
             <td rowspan="2">스탯 공격력</td>
@@ -30,29 +38,29 @@
         </tr>
         <tr class="stat-row">
             <td>HP</td>
-            <td colspan="3">{equipData.hpSum()}</td>
+            <td colspan="3">{$sumData.hpSum}</td>
         </tr>
         <tr class="stat-row">
             <td>STR</td>
-            <td colspan="3">{equipData.strSum()}</td>
+            <td colspan="3">{$sumData.strSum}</td>
         </tr>
         <tr class="stat-row">
             <td>DEX</td>
-            <td colspan="3">{equipData.dexSum()}</td>
+            <td colspan="3">{$sumData.dexSum}</td>
         </tr>
         <tr class="stat-row">
             <td>INT</td>
-            <td colspan="3">{equipData.intSum()}</td>
+            <td colspan="3">{$sumData.intSum}</td>
         </tr>
         <tr class="stat-row">
             <td>LUK</td>
-            <td colspan="3">{equipData.lukSum()}</td>
+            <td colspan="3">{$sumData.lukSum}</td>
         </tr>
         <tr class="stat-row2">
             <td>데미지</td>
-            <td>{equipData.dmgSum()}%</td>
+            <td>{$sumData.dmgSum}%</td>
             <td>보스 데미지</td>
-            <td>{equipData.bossSum()}%</td>
+            <td>{$sumData.bossSum}%</td>
         </tr>
         <tr class="stat-row2">
             <td>최종 데미지</td>
@@ -62,9 +70,9 @@
         </tr>
         <tr class="stat-row2">
             <td>방어율 무시</td>
-            <td>{equipData.armpSum()}%</td>
+            <td>{$sumData.armpSum}%</td>
             <td>스타포스</td>
-            <td>{equipData.starforceSum()}</td>
+            <td>{$sumData.starforceSum}</td>
         </tr>
         <tr class="stat-row2">
             <td>크리티컬 확률</td>
@@ -80,9 +88,9 @@
         </tr>
         <tr class="stat-row2">
             <td>공격력</td>
-            <td>{equipData.adSum()}</td>
+            <td>{$sumData.adSum}</td>
             <td>마력</td>
-            <td>{equipData.apSum()}</td>
+            <td>{$sumData.apSum}</td>
         </tr>
         <tr class="stat-row2">
             <td>아케인포스</td>

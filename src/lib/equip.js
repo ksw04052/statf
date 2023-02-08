@@ -1,5 +1,5 @@
 // @ts-ignore
-import { writable } from "svelte/store";
+import { writable, derived } from "svelte/store";
 
 let equip = [
     {
@@ -812,78 +812,109 @@ let equip = [
 ]
 
 
-function equipFunction() {
-    const { subscribe, set, update } = writable(equip)
 
-    return {
-        subscribe,
-        strSum : () => {
-            let result = 0
-            equip.forEach(item => result = result + item.str[0] + item.str[1] + item.str[2])
-            return result
-        },
-        dexSum : () => {
-            let result = 0
-            equip.forEach(item => result = result + item.dex[0] + item.dex[1] + item.dex[2])
-            return result
-        },
-        intSum : () => {
-            let result = 0
-            equip.forEach(item => result = result + item.int[0] + item.int[1] + item.int[2])
-            return result
-        },
-        lukSum : () => {
-            let result = 0
-            equip.forEach(item => result = result + item.luk[0] + item.luk[1] + item.luk[2])
-            return result
-        },
-        hpSum : () => {
-            let result = 0
-            equip.forEach(item => result = result + item.hp[0] + item.hp[1] + item.hp[2])
-            return result
-        },
-        hppSum : () => {
-            let result = 0
-            equip.forEach(item => result = result + item.hpp)
-            return result
-        },
-        adSum : () => {
-            let result = 0
-            equip.forEach(item => result = result + item.ad[0] + item.ad[1] + item.ad[2])
-            return result
-        },
-        apSum : () => {
-            let result = 0
-            equip.forEach(item => result = result + item.ap[0] + item.ap[1] + item.ap[2])
-            return result
-        },
-        allSum : () => {
-            let result = 0
-            equip.forEach(item => result = result + item.all[0] + item.all[1] + item.all[2])
-            return result
-        },
-        bossSum : () => {
-            let result = 0
-            equip.forEach(item => result = result + item.boss[0] + item.boss[1] + item.boss[2])
-            return result
-        },
-        armpSum : () => {
-            let result = 0
-            equip.forEach(item => result = result + item.armp[0] + item.armp[1] + item.armp[2])
-            return result
-        },
-        dmgSum : () => {
-            let result = 0
-            equip.forEach(item => result = result + item.dmg[0] + item.dmg[1] + item.dmg[2])
-            return result
-        },
-        starforceSum : () => {
-            let result = 0
-            equip.forEach(item => result = result + item.starforce)
-            return result
-        },
+// function equipFunction() {
+//     const { subscribe, set, update } = writable(equip)
+
+//     return {
+//         subscribe,
+//         set,
+//         update,
+//         strSum : () => {
+//             let result = 0
+//             equip.forEach(item => result = result + item.str[0] + item.str[1] + item.str[2])
+//             return result
+//         },
+//         dexSum : () => {
+//             let result = 0
+//             equip.forEach(item => result = result + item.dex[0] + item.dex[1] + item.dex[2])
+//             return result
+//         },
+//         intSum : () => {
+//             let result = 0
+//             equip.forEach(item => result = result + item.int[0] + item.int[1] + item.int[2])
+//             return result
+//         },
+//         lukSum : () => {
+//             let result = 0
+//             equip.forEach(item => result = result + item.luk[0] + item.luk[1] + item.luk[2])
+//             return result
+//         },
+//         hpSum : () => {
+//             let result = 0
+//             equip.forEach(item => result = result + item.hp[0] + item.hp[1] + item.hp[2])
+//             return result
+//         },
+//         hppSum : () => {
+//             let result = 0
+//             equip.forEach(item => result = result + item.hpp)
+//             return result
+//         },
+//         adSum : () => {
+//             let result = 0
+//             equip.forEach(item => result = result + item.ad[0] + item.ad[1] + item.ad[2])
+//             return result
+//         },
+//         apSum : () => {
+//             let result = 0
+//             equip.forEach(item => result = result + item.ap[0] + item.ap[1] + item.ap[2])
+//             return result
+//         },
+//         allSum : () => {
+//             let result = 0
+//             equip.forEach(item => result = result + item.all[0] + item.all[1] + item.all[2])
+//             return result
+//         },
+//         bossSum : () => {
+//             let result = 0
+//             equip.forEach(item => result = result + item.boss[0] + item.boss[1] + item.boss[2])
+//             return result
+//         },
+//         armpSum : () => {
+//             let result = 0
+//             equip.forEach(item => result = result + item.armp[0] + item.armp[1] + item.armp[2])
+//             return result
+//         },
+//         dmgSum : () => {
+//             let result = 0
+//             equip.forEach(item => result = result + item.dmg[0] + item.dmg[1] + item.dmg[2])
+//             return result
+//         },
+//         starforceSum : () => {
+//             let result = 0
+//             equip.forEach(item => result = result + item.starforce)
+//             return result
+//         },
+//     }
+// }
+
+export const equipData = writable(equip)
+
+export const sumData = derived(
+    [equipData],
+    ([$equipData]) => {
+        let strSum = 0
+        let dexSum = 0
+        let intSum = 0
+        let lukSum = 0
+        let hpSum = 0
+        let dmgSum = 0
+        let bossSum = 0
+        let armpSum = 0
+        let starforceSum = 0
+        let adSum = 0
+        let apSum = 0
+        $equipData.forEach(item => strSum = strSum + item.str[0] + item.str[1] + item.str[2])
+        $equipData.forEach(item => dexSum = dexSum + item.dex[0] + item.dex[1] + item.dex[2])
+        $equipData.forEach(item => intSum = intSum + item.int[0] + item.int[1] + item.int[2])
+        $equipData.forEach(item => lukSum = lukSum + item.luk[0] + item.luk[1] + item.luk[2])
+        $equipData.forEach(item => hpSum = hpSum + item.hp[0] + item.hp[1] + item.hp[2])
+        $equipData.forEach(item => dmgSum = dmgSum + item.dmg[0] + item.dmg[1] + item.dmg[2])
+        $equipData.forEach(item => bossSum = bossSum + item.boss[0] + item.boss[1] + item.boss[2])
+        $equipData.forEach(item => armpSum = armpSum + item.armp[0] + item.armp[1] + item.armp[2])
+        $equipData.forEach(item => starforceSum = starforceSum + item.starforce)
+        $equipData.forEach(item => adSum = adSum + item.ad[0] + item.ad[1] + item.ad[2])
+        $equipData.forEach(item => apSum = apSum + item.ap[0] + item.ap[1] + item.ap[2])
+        return {strSum : strSum, dexSum : dexSum, intSum : intSum, lukSum : lukSum, hpSum : hpSum, dmgSum : dmgSum, bossSum : bossSum, armpSum : armpSum, starforceSum : starforceSum, adSum : adSum, apSum : apSum}
     }
-}
-
-export const equipData = equipFunction()
-
+)
