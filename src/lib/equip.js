@@ -1,5 +1,7 @@
+// @ts-nocheck
 // @ts-ignore
 import { writable, derived } from "svelte/store";
+import { potData } from "./potential";
 
 let equip = [
     {
@@ -84,7 +86,7 @@ let equip = [
         boss : [0, 0, 0],
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
-        scissor : "inf",
+        scissor : "none",
         potential : {
             rank : "legendary",
             line1 : "dexpp",
@@ -244,7 +246,7 @@ let equip = [
         boss : [0, 0, 0],
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
-        scissor : "inf",
+        scissor : "none",
         potential : {
             rank : "legendary",
             line1 : "dexpp",
@@ -347,7 +349,7 @@ let equip = [
         boss : [0, 0, 0],
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
-        scissor : "inf",
+        scissor : "none",
         potential : {
             rank : "legendary",
             line1 : "dexpp",
@@ -603,7 +605,7 @@ let equip = [
         boss : [0, 0, 0],
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
-        scissor : "inf",
+        scissor : "none",
         potential : {
             rank : "none",
             line1 : "none",
@@ -731,7 +733,7 @@ let equip = [
         boss : [0, 0, 0],
         armp : [0, 0, 0],
         dmg : [0, 0, 0],
-        scissor : "inf",
+        scissor : "none",
         potential : {
             rank : "legendary",
             line1 : "bossp2",
@@ -889,7 +891,304 @@ let equip = [
 // }
 
 export const equipData = writable(equip)
-
+export const potSumData = derived(
+    [equipData, potData],
+    ([$equipData, $potData]) => {
+        let strpSum = 0
+        let dexpSum = 0
+        let intpSum = 0
+        let lukpSum = 0
+        let allpSum = 0
+        let strvSum = 0
+        let dexvSum = 0
+        let intvSum = 0
+        let lukvSum = 0
+        let allvSum = 0
+        let strp10Sum = 0
+        let dexp10Sum = 0
+        let intp10Sum = 0
+        let lukp10Sum = 0
+        let hpSum = 0
+        let hppSum = 0
+        let dmgSum = 0
+        let bossSum = 0
+        let armpSum = 0
+        let adpSum = 0
+        let appSum = 0
+        let advSum = 0
+        let apvSum = 0
+        let adp10Sum = 0
+        let app10Sum = 0
+        let crrSum = 0
+        let crdSum = 0
+        let cdrSum = 0
+        $equipData.forEach(item => {
+            let type = $potData.potential[item.potential.rank][item.potential.line1].type
+            let value = $potData.potential[item.potential.rank][item.potential.line1].value
+            if(type == "strp"){
+                strpSum = strpSum + value
+            }
+            else if(type == "dexp"){
+                dexpSum = dexpSum + value
+            }
+            else if(type == "intp"){
+                intpSum = intpSum + value
+            }
+            else if(type == "lukp"){
+                lukpSum = lukpSum + value
+            }
+            else if(type == "allp"){
+                allpSum = allpSum + value
+            }
+            else if(type == "strp10"){
+                strp10Sum = strp10Sum + value
+            }
+            else if(type == "dexp10"){
+                dexp10Sum = dexp10Sum + value
+            }
+            else if(type == "intp10"){
+                intp10Sum = intp10Sum + value
+            }
+            else if(type == "lukp10"){
+                lukp10Sum = lukp10Sum + value
+            }
+            else if(type == "strv"){
+                strvSum = strvSum + value
+            }
+            else if(type == "dexv"){
+                dexvSum = dexvSum + value
+            }
+            else if(type == "intv"){
+                intvSum = intvSum + value
+            }
+            else if(type == "lukv"){
+                lukvSum = lukvSum + value
+            }
+            else if(type == "allv"){
+                allvSum = allvSum + value
+            }
+            else if(type == "hp"){
+                hpSum = hpSum + value
+            }
+            else if(type == "hpp"){
+                hppSum = hppSum + value
+            }
+            else if(type == "dmg"){
+                dmgSum = dmgSum + value
+            }
+            else if(type == "boss"){
+                bossSum = bossSum + value
+            }
+            else if(type == "armp"){
+                armpSum = armpSum + value
+            }
+            else if(type == "adp"){
+                adpSum = adpSum + value
+            }
+            else if(type == "app"){
+                appSum = appSum + value
+            }
+            else if(type == "adv"){
+                advSum = advSum + value
+            }
+            else if(type == "apv"){
+                apvSum = apvSum + value
+            }
+            else if(type == "adp10"){
+                adp10Sum = adp10Sum + value
+            }
+            else if(type == "app10"){
+                app10Sum = app10Sum + value
+            }
+            else if(type == "crr"){
+                crrSum = crrSum + value
+            }
+            else if(type == "crd"){
+                crdSum = crdSum + value
+            }
+            else if(type == "cdr"){
+                cdrSum = cdrSum + value
+            }
+        })
+        $equipData.forEach(item => {
+            let type = $potData.potential[item.potential.rank][item.potential.line2].type
+            let value = $potData.potential[item.potential.rank][item.potential.line2].value
+            if(type == "strp"){
+                strpSum = strpSum + value
+            }
+            else if(type == "dexp"){
+                dexpSum = dexpSum + value
+            }
+            else if(type == "intp"){
+                intpSum = intpSum + value
+            }
+            else if(type == "lukp"){
+                lukpSum = lukpSum + value
+            }
+            else if(type == "allp"){
+                allpSum = allpSum + value
+            }
+            else if(type == "strp10"){
+                strp10Sum = strp10Sum + value
+            }
+            else if(type == "dexp10"){
+                dexp10Sum = dexp10Sum + value
+            }
+            else if(type == "intp10"){
+                intp10Sum = intp10Sum + value
+            }
+            else if(type == "lukp10"){
+                lukp10Sum = lukp10Sum + value
+            }
+            else if(type == "strv"){
+                strvSum = strvSum + value
+            }
+            else if(type == "dexv"){
+                dexvSum = dexvSum + value
+            }
+            else if(type == "intv"){
+                intvSum = intvSum + value
+            }
+            else if(type == "lukv"){
+                lukvSum = lukvSum + value
+            }
+            else if(type == "allv"){
+                allvSum = allvSum + value
+            }
+            else if(type == "hp"){
+                hpSum = hpSum + value
+            }
+            else if(type == "hpp"){
+                hppSum = hppSum + value
+            }
+            else if(type == "dmg"){
+                dmgSum = dmgSum + value
+            }
+            else if(type == "boss"){
+                bossSum = bossSum + value
+            }
+            else if(type == "armp"){
+                armpSum = armpSum + value
+            }
+            else if(type == "adp"){
+                adpSum = adpSum + value
+            }
+            else if(type == "app"){
+                appSum = appSum + value
+            }
+            else if(type == "adv"){
+                advSum = advSum + value
+            }
+            else if(type == "apv"){
+                apvSum = apvSum + value
+            }
+            else if(type == "adp10"){
+                adp10Sum = adp10Sum + value
+            }
+            else if(type == "app10"){
+                app10Sum = app10Sum + value
+            }
+            else if(type == "crr"){
+                crrSum = crrSum + value
+            }
+            else if(type == "crd"){
+                crdSum = crdSum + value
+            }
+            else if(type == "cdr"){
+                cdrSum = cdrSum + value
+            }
+        })
+        $equipData.forEach(item => {
+            let type = $potData.potential[item.potential.rank][item.potential.line3].type
+            let value = $potData.potential[item.potential.rank][item.potential.line3].value
+            if(type == "strp"){
+                strpSum = strpSum + value
+            }
+            else if(type == "dexp"){
+                dexpSum = dexpSum + value
+            }
+            else if(type == "intp"){
+                intpSum = intpSum + value
+            }
+            else if(type == "lukp"){
+                lukpSum = lukpSum + value
+            }
+            else if(type == "allp"){
+                allpSum = allpSum + value
+            }
+            else if(type == "strp10"){
+                strp10Sum = strp10Sum + value
+            }
+            else if(type == "dexp10"){
+                dexp10Sum = dexp10Sum + value
+            }
+            else if(type == "intp10"){
+                intp10Sum = intp10Sum + value
+            }
+            else if(type == "lukp10"){
+                lukp10Sum = lukp10Sum + value
+            }
+            else if(type == "strv"){
+                strvSum = strvSum + value
+            }
+            else if(type == "dexv"){
+                dexvSum = dexvSum + value
+            }
+            else if(type == "intv"){
+                intvSum = intvSum + value
+            }
+            else if(type == "lukv"){
+                lukvSum = lukvSum + value
+            }
+            else if(type == "allv"){
+                allvSum = allvSum + value
+            }
+            else if(type == "hp"){
+                hpSum = hpSum + value
+            }
+            else if(type == "hpp"){
+                hppSum = hppSum + value
+            }
+            else if(type == "dmg"){
+                dmgSum = dmgSum + value
+            }
+            else if(type == "boss"){
+                bossSum = bossSum + value
+            }
+            else if(type == "armp"){
+                armpSum = armpSum + value
+            }
+            else if(type == "adp"){
+                adpSum = adpSum + value
+            }
+            else if(type == "app"){
+                appSum = appSum + value
+            }
+            else if(type == "adv"){
+                advSum = advSum + value
+            }
+            else if(type == "apv"){
+                apvSum = apvSum + value
+            }
+            else if(type == "adp10"){
+                adp10Sum = adp10Sum + value
+            }
+            else if(type == "app10"){
+                app10Sum = app10Sum + value
+            }
+            else if(type == "crr"){
+                crrSum = crrSum + value
+            }
+            else if(type == "crd"){
+                crdSum = crdSum + value
+            }
+            else if(type == "cdr"){
+                cdrSum = cdrSum + value
+            }
+        })
+        return {strpSum : strpSum, dexpSum : dexpSum, intpSum : intpSum, lukpSum : lukpSum, allpSum : allpSum, strvSum : strvSum, dexvSum : dexvSum, intvSum : intvSum, lukvSum : lukvSum, allvSum : allvSum, strp10Sum : strp10Sum, dexp10Sum : dexp10Sum, intp10Sum : intp10Sum, lukp10Sum : lukp10Sum, hpSum : hpSum, hppSum : hppSum, dmgSum : dmgSum, bossSum : bossSum, armpSum : armpSum, adpSum : adpSum, appSum : appSum, advSum : advSum, apvSum : apvSum, adp10Sum : adp10Sum, app10Sum : app10Sum, crrSum : crrSum, crdSum : crdSum, cdrSum : cdrSum}
+    }
+)
 export const sumData = derived(
     [equipData],
     ([$equipData]) => {

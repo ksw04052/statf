@@ -2,7 +2,7 @@
     import Navbar from "../components/Navbar.svelte"
     import Equip from "../components/Equip.svelte"
     import Stats from "../components/Stats.svelte"
-    let isStatOpen = false
+    let isStatOpen = true
     const toggleStat = () => (isStatOpen = !isStatOpen)
 </script>
 

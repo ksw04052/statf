@@ -1,7 +1,7 @@
 <script>
 // @ts-nocheck
     
-    import { equipData, sumData } from "../lib/equip"
+    import { equipData, sumData, potSumData } from "../lib/equip"
     import { potData } from "../lib/potential"
     import { jobData, selJob } from "../lib/jobs"
 
@@ -42,25 +42,25 @@
         </tr>
         <tr class="stat-row">
             <td>STR</td>
-            <td colspan="3">{$sumData.strSum}</td>
+            <td colspan="3">{$sumData.strSum}+{$potSumData.strpSum}</td>
         </tr>
         <tr class="stat-row">
             <td>DEX</td>
-            <td colspan="3">{$sumData.dexSum}</td>
+            <td colspan="3">{$sumData.dexSum}+{$potSumData.dexpSum}</td>
         </tr>
         <tr class="stat-row">
             <td>INT</td>
-            <td colspan="3">{$sumData.intSum}</td>
+            <td colspan="3">{$sumData.intSum}+{$potSumData.intpSum}</td>
         </tr>
         <tr class="stat-row">
             <td>LUK</td>
-            <td colspan="3">{$sumData.lukSum}</td>
+            <td colspan="3">{$sumData.lukSum}+{$potSumData.lukpSum}</td>
         </tr>
         <tr class="stat-row2">
             <td>데미지</td>
-            <td>{$sumData.dmgSum}%</td>
+            <td>{$sumData.dmgSum + $potSumData.dmgSum}%</td>
             <td>보스 데미지</td>
-            <td>{$sumData.bossSum}%</td>
+            <td>{$sumData.bossSum + $potSumData.bossSum}%</td>
         </tr>
         <tr class="stat-row2">
             <td>최종 데미지</td>

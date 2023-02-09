@@ -40,9 +40,9 @@
         }
         
     }
-    function changeStr(param) {
+    function test(param) {
         equipData.update(n => {
-            n.find(e => e.type == "cap").str[1] = param
+            n.find(e => e.type == "cap").potential.line1 = param
             return n
         })
     }
@@ -79,7 +79,12 @@
         boss = $equipData.find(e => e.type == sel).boss
         armp = $equipData.find(e => e.type == sel).armp
         dmg = $equipData.find(e => e.type == sel).dmg
-        scissor = $equipData.find(e => e.type == sel).scissor
+        if($equipData.find(e => e.type == sel).scissor == "none"){
+            scissor = ""
+        }
+        else{
+            scissor = $equipData.find(e => e.type == sel).scissor
+        }
     }
     
     function editCurrent() {
@@ -117,7 +122,7 @@
             <button class="tab">캐시</button>
             <button class="tab">펫</button>
         </div>
-        <button on:click={() => changeStr(2000)}>테스트</button>
+        <button on:click={() => test("dexpp")}>테스트</button>
         <table>
             <tr class="equip-row">
                 <td><button class="equip-item {rank("ring1")}" on:click={() => changeSel("ring1")}><span>반지1</span></button></td>
@@ -199,7 +204,7 @@
             <p>{#if cur.soul}{cur.soul.prefix} {cur.soul.boss}의<br>{/if}{cur.title} {#if cur.scroll > 0}(+{cur.scroll}){/if}</p>
         </div>
         <div class="icon">
-            <img src="https://maplestory.io/api/kmst/1150/item/1152154/icon" alt="">
+            <!-- <img src="https://maplestory.io/api/kmst/1150/item/1152154/icon" alt=""> -->
         </div>
         <div class="data dotted-bottom">
             <p>STR : +{cur.str[0]+cur.str[1]+cur.str[2]} ({cur.str[0]}+{cur.str[1]}+{cur.str[2]})</p>
@@ -312,9 +317,9 @@
         padding: 0.5rem;
         background-color: hsla(0 0% 15% / 85%);
     }
-    .icon img{
+    /* .icon img{
         width: 30%;
-    }
+    } */
     .equip-edit {
         border: 1px solid black;
         border-radius: 5px;
